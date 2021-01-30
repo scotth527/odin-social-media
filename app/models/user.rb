@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   attr_accessor :email, :password, :password_confirmation
+
+  has_many :posts
+  has_many :friend_requests
 end
