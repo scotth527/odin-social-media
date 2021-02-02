@@ -6,4 +6,8 @@
 #
 billy:
     email: billy@aol.com
-    encrypted_password: <%= User.new.send(:password_digest, 'Password1!')
+    encrypted_password: <%= User.new.send(:password_digest, 'Password1!') %>
+
+sam: 
+    email: sam@aol.com
+    encrypted_password: <%= User.new.send(:password_digest, 'Password1!') %>

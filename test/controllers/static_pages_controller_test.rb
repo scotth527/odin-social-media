@@ -5,7 +5,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   test "go to the static page" do
-      get root
+      get root_path
       assert_response :success
   end
 end
