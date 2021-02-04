@@ -12,8 +12,30 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
   test "Post index works " do
-      get posts_url
+      visit posts_url
       assert_response :success
   end
+
+  test "Post show shows correct body and user" do
+      visit posts(:one)
+
+      assert_response :success
+
+      assert_select 'p', /MY FIRST POST/
+  end
+
+  test "Create posts is actually adding and creating a new post" do
+  end 
+
+  test "Delete posts shows alert" do
+  end
+
+  test "Edit posts actually changes post" do
+  end
+
+  test "Edit posts returns to post page" do
+  end
+
+
 
 end

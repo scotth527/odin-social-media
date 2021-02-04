@@ -2,12 +2,17 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require "minitest/reporters"
+require 'capybara/rails'
+require 'capybara/minitest'
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(:color => true)]
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   include Devise::Test::IntegrationHelpers
   include Warden::Test::Helpers
+  include Capybara::DSL
+# Make `assert_*` methods behave like Minitest assertions
+  include Capybara::Minitest::Assertions
 
   parallelize(workers: :number_of_processors)
 
@@ -21,5 +26,11 @@ class ActiveSupport::TestCase
       else
           sign_in(user)
       end
+  end
+
+  # Reset sessions and driver between tests
+  teardown do
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
   end
 end
