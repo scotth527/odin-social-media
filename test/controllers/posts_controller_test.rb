@@ -17,7 +17,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Post show shows correct body and user" do
-      visit posts(:one)
+      p "Testing id"
+      p posts(:one)
+      visit '/posts/#{posts(:one)}'
 
       assert_response :success
 
@@ -25,7 +27,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Create posts is actually adding and creating a new post" do
-  end 
+  end
 
   test "Delete posts shows alert" do
   end
