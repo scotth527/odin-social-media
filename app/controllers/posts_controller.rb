@@ -1,6 +1,6 @@
 
 class PostsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only:[:new, :create, :index, :edit, :show, :update, :delete]
 
     def new
         @post = Post.new
@@ -15,10 +15,12 @@ class PostsController < ApplicationController
     end
 
     def show
+        @post = Post.find(params[:id])
     end
 
 
     def edit
+        @post = Post.find(params[:id])
     end
 
     def update

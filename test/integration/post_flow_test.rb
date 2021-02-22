@@ -8,7 +8,7 @@ class PostFlowTest < ActionDispatch::IntegrationTest
 
   test 'post index' do
     get posts_path
-
+    assert_response :redirect
     # assert page.has_content?(@one.title)
     # assert page.has_content?(@two.title)
   end
